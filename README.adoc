@@ -2,7 +2,7 @@
 
 image:https://img.shields.io/badge/vert.x-4.5.14-purple.svg[link="https://vertx.io"]
 
-A RESTful API for managing student records using Vert.x. (This application was generated using http://start.vertx.io)
+A RESTful API for managing student records using Vert.x. This application allows CRUD (Create, Read, Update, Delete) operations on student data such as name, age, email, CGPA, and profile creation date.This application was generated using http://start.vertx.io
 
 ## Features
 - Save new student records.
@@ -11,9 +11,9 @@ A RESTful API for managing student records using Vert.x. (This application was g
 
 - Find a student by parameters (e.g., name, email).
 
-- Edit an existing student record.
+- Edit a student record (using email as a key to find the student)
 
-- Delete a student record.
+- Delete a student record (using both name and email to uniquely identify the student)
 
 ## Technologies Used
 - Vert.x: A toolkit for building reactive applications.
