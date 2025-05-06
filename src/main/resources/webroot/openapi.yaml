@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Student Info API
+  version: 1.0.0
+  description: API for managing student records using Vert.x
+
+servers:
+  - url: http://localhost:8888
+
+paths:
+  /save/studentInfo:
+    post:
+      operationId: saveStudent
+      summary: Save a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+          description: Student saved successfully
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal error
+
+  /view/studentInfo:
+    get:
+      operationId: viewStudents
+      summary: View all students
+      responses:
+        '200':
+          description: List of students
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+        '500':
+          description: Internal error
+
+  /find/studentInfo:
+    post:  # Changed from GET to POST to support body input
+      operationId: findStudent
+      summary: Find a student by parameters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialStudent'
+      responses:
+        '200':
+          description: Student found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '500':
+          description: Internal error
+
+  /edit/studentInfo:
+    put:
+      operationId: editStudent
+      summary: Edit a student record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialStudent'
+      responses:
+        '200':
+          description: Student updated
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: Internal error
+
+  /delete/studentInfo:
+    delete:
+      operationId: deleteStudent
+      summary: Delete a student record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartialStudent'
+      responses:
+        '200':
+          description: Student deleted
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: Internal error
+
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Alice"
+        age:
+          type: integer
+          example: 22
+        email:
+          type: string
+          format: email
+          example: "alice@example.com"
+        cgpa:
+          type: number
+          format: float
+          example: 3.75
+        profileCreatedAt:
+          type: string
+          format: date
+          example: "2024-05-06"
+      required:
+        - name
+        - age
+        - email
+        - cgpa
+
+    PartialStudent:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Alice"
+        age:
+          type: integer
+          example: 22
+        email:
+          type: string
+          format: email
+          example: "alice@example.com"
+        cgpa:
+          type: number
+          format: float
+          example: 3.75
+        profileCreatedAt:
+          type: string
+          format: date
+          example: "2024-05-06"
+      # No required fields for flexibility

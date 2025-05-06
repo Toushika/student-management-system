@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+  <!-- Console Appender -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Optional File Appender -->
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>logs/vertx.log</file>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Suppress noisy MongoDB logs -->
+  <logger name="org.mongodb.driver" level="WARN"/>
+  <logger name="io.netty" level="WARN"/>
+  <logger name="io.vertx" level="INFO"/>
+  <logger name="io.vertx.core.impl" level="WARN"/>
+
+  <!-- Application-specific packages (set to DEBUG/INFO as needed) -->
+  <logger name="rnd.dev" level="DEBUG" />
+
+  <!-- Root Logger (set to INFO or WARN) -->
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE"/>
+  </root>
+
+</configuration>
