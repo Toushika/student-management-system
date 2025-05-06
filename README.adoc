@@ -1,10 +1,41 @@
-= Student-Management-System
+# Student-Management-System
 
 image:https://img.shields.io/badge/vert.x-4.5.14-purple.svg[link="https://vertx.io"]
 
-This application was generated using http://start.vertx.io
+A RESTful API for managing student records using Vert.x. (This application was generated using http://start.vertx.io)
 
-== Building
+## Features
+- Save new student records.
+
+- View all students.
+
+- Find a student by parameters (e.g., name, email).
+
+- Edit an existing student record.
+
+- Delete a student record.
+
+## Technologies Used
+- Vert.x: A toolkit for building reactive applications.
+
+- MongoDB: NoSQL database for storing student data.
+
+- OpenAPI 3.0: Specification for API documentation.
+
+- Java: Programming language used.
+
+- Maven: Build automation tool.
+
+## Prerequisites
+Before running the project, make sure you have the following installed:
+
+- Java: Version 21 or higher.
+
+- MongoDB: For storing student records. You can use a local instance or a cloud-based MongoDB service.
+
+- Maven: For building and running the project.
+
+## Building and Running the Project
 
 To launch your tests:
 ```
@@ -17,6 +48,12 @@ To package your application:
 ```
 
 To run your application:
+```
+./mvnw exec:java
+```
+
+Or, you can run everything together:
+
 ```
 ./mvnw clean package exec:java
 ```
